@@ -10,7 +10,7 @@
 locale                   : "en-US"
 title                    : "Ryan Sungmo Kwon"
 title_separator          : "-"
-name                     : &name "Ryan Kwon"
+name                     : &name "Ryan (Sungmo) Kwon"
 description              : &description "personal description"
 url                      : https://ryankwon03.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -24,8 +24,8 @@ author:
   avatar           : "profile.png"
   name             : "idk what this is"
   pronouns         : # example: "she/her"  
-  bio              : "This is ryankwon"
-  location         : "SOMEWHERE"
+  bio              : ""
+  location         : "Ann Arbor, MI, USA"
   employer         : "University of Michigan"
   uri              : # URL
   email            : "ryankwon@umich.edu" 
@@ -34,9 +34,9 @@ author:
   arxiv            : # URL - Update with the correct link to your profile
   googlescholar    : "googlescholar.com"
   impactstory      : # URL
-  orcid            : "orcid.com"
+  orcid            : # URL
   semantic         : # URL
-  pubmed           : "pubmed.com"
+  pubmed           : # URL
   researchgate     : # URL
   scopus           : # URL
 
@@ -49,7 +49,7 @@ author:
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
@@ -58,7 +58,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "ryansmkwon"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
@@ -228,17 +228,17 @@ collections:
 
 # These settings control how pages and collections are included in the site
 defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
+  # # _posts
+  # - scope:
+  #     path: ""
+  #     type: posts
+  #   values:
+  #     layout: single
+  #     author_profile: true
+  #     read_time: true
+  #     comments: true
+  #     share: true
+  #     related: true
   # _pages
   - scope:
       path: ""
@@ -246,15 +246,15 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
+  # # _teaching
+  # - scope:
+  #     path: ""
+  #     type: teaching
+  #   values:
+  #     layout: single
+  #     author_profile: true
+  #     share: true
+  #     comments: true
   # _publications
   - scope:
       path: ""
@@ -273,14 +273,14 @@ defaults:
       author_profile: true
       share: true
       comment: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
+  # # _talks
+  # - scope:
+  #     path: ""
+  #     type: talks
+  #   values:
+  #     layout: talk
+  #     author_profile: true
+  #     share: true
 
 
 # Sass/SCSS
