@@ -3,7 +3,7 @@
 # This config file is meant for settings that affect your entire site, values
 # which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve -l -H localhost`. If you change this file, please restart the 
+# `bundle exec jekyll serve -l -H localhost --livereload`. If you change this file, please restart the 
 # server process.
 
 # Basic Site Settings
@@ -21,10 +21,10 @@ repository               : "ryankwon03/ryankwon03.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
-  name             : "idk what this is"
+  avatar           : "racoon.jpg"
+  name             : "Ryan (Sungmo) Kwon"
   pronouns         : # example: "she/her"  
-  bio              : ""
+  bio              : "Undergraduate Student<br><a href='https://cse.engin.umich.edu/' target='_blank'>CSE@UMich</a>"
   location         : "Ann Arbor, MI, USA"
   employer         : "University of Michigan"
   uri              : # URL
@@ -102,7 +102,7 @@ comments:
     colorscheme          : # "light" (default), "dark"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
-  branch                 : "gh-pages" # "master", "gh-pages"
+  branch                 : "master" # "master", "gh-pages"
   commitMessage          : "New comment."
   filename               : comment-{@timestamp}
   format                 : "yml"
@@ -117,7 +117,7 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
-  hide                   : false     # change to true to hide the RSS feed in the footer
+  hide                   : true     # change to true to hide the RSS feed in the footer
   path                   : # blank (default) uses feed.xml
 
 
@@ -255,7 +255,7 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  _publications
+  # _publications
   - scope:
       path: ""
       type: publications
