@@ -21,7 +21,7 @@ repository               : "ryankwon03/ryankwon03.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "racoon.jpg"
+  avatar           : "ryan.jpg"
   name             : "Ryan (Sungmo) Kwon"
   pronouns         : # example: "she/her"  
   bio              : "Undergraduate Student<br><a href='https://cse.engin.umich.edu/' target='_blank'>CSE@UMich</a>"
