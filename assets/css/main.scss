@@ -39,3 +39,31 @@
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
+
+/* Custom styles for publications page */
+.publications {
+  .archive__item-title {
+    font-size: 1rem;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+  }
+  
+  .publication-meta, 
+  .publication-authors,
+  .paper-link {
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+    font-size: 0.9em; /* Increased from 0.8em to 0.9em */
+    font-weight: 300;
+    margin: 0 0 0.3em 0; /* Added small bottom margin for spacing */
+    padding: 0;
+    line-height: 1.2;
+  }
+  
+  .paper-link {
+    margin-bottom: 0; /* Remove bottom margin from the last element */
+  }
+  
+  .archive__item {
+    margin-bottom: 1.5em;
+  }
+}
