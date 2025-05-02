@@ -16,6 +16,10 @@ News
 - bullet1
 - bullet2
 
+Education
+------
+University of Michigan (08/2022 ~ 08/2026)
+
 Research Interests
 ------
 description 2-2
