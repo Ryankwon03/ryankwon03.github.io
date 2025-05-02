@@ -8,8 +8,11 @@ main:
   - title: "Publications"
     url: /publications/
     
-  - title: "Activities"
-    url: /activities/
+  - title: "Experience"
+    url: /experience/
+    
+  - title: "Projects"
+    url: /projects/
 
   - title: "CV"
     url: /cv/

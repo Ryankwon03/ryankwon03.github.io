@@ -1,7 +1,7 @@
 ---
 layout: archive
-title: "Projects"
-permalink: /projects/
+title: "Experience"
+permalink: /experience/
 ---
 
 HELLO WORLD
