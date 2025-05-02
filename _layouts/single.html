@@ -47,6 +47,12 @@ layout: default
       <section class="page__content" itemprop="text">
         {{ content }}
 
+        {% if page.paperurl %}
+          <p>
+            <a href="{{ page.paperurl }}">Paper</a>{% if page.codeurl %} | <a href="{{ page.codeurl }}">Code</a>{% endif %}{% if page.dataseturl %} | <a href="{{ page.dataseturl }}">Dataset</a>{% endif %}{% if page.modelurl %} | <a href="{{ page.modelurl }}">Model</a>{% endif %}
+          </p>
+        {% endif %}
+
         {% if page.citation and page.paperurl and page.slidesurl %}
           <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a></p>
         {% elsif page.citation and page.paperurl %}
