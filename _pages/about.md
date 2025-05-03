@@ -13,12 +13,12 @@ I am an undergraduate student in CSE at the University of Michigan - Ann Arbor. 
 
 News
 ------
-- bullet1
-- bullet2
+
 
 Education
 ------
-University of Michigan (08/2022 ~ 08/2026)
+<span style="font-family: 'Georgia', serif;">University of Michigan</span>  
+(08/2022 ~ 08/2026)
 
 Research Interests
 ------
