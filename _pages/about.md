@@ -19,6 +19,9 @@ Education
 <span>(08/2022 ~ 06/2026)</span>  
 B.S. in Computer Science and Engineering
 
+<span style="font-weight: bold;">Yongsan International School of Seoul</span>
+<span>(09/2018 ~ 06/2022)</span>
+
 Research Interests
 ------
 - NLP
