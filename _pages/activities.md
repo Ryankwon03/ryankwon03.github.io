@@ -1,9 +1,0 @@
----
-layout: archive
-title: "Projects"
-permalink: /projects/
----
-
-HELLO WORLD
-=====
-this is a random page
