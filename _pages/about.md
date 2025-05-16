@@ -11,7 +11,7 @@ I am an undergraduate student in CSE at the University of Michigan - Ann Arbor. 
 
 News
 ------
-- To be updated soon...
+- **May 2025:** Our paper *Representation Bending for Large Language Model Safety* has been accepted at ACL 2025!
 
 Education
 ------
