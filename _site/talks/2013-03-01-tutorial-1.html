@@ -37,7 +37,7 @@
 
 
 
-  <meta property="og:description" name="description" content="More information here">
+  <meta property="og:description" name="description" content="More information hereThis is a description of your tutorial, note the different field in type. This is a markdown files that can be all markdown-ified like any other post. Yay markdown!">
 
 
 
@@ -275,7 +275,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Tutorial 1 on Relevant Topic in Your Field">
-    <meta itemprop="description" content="More information here">
+    <meta itemprop="description" content="More information hereThis is a description of your tutorial, note the different field in type. This is a markdown files that can be all markdown-ified like any other post. Yay markdown!">
     <meta itemprop="datePublished" content="March 01, 2013">
     
 
@@ -410,12 +410,9 @@
       'ua=' + encodeURIComponent(ua)
     ].join('&');
     var url = scriptUrl + (scriptUrl.indexOf('?') >= 0 ? '&' : '?') + q;
-    // Try sendBeacon first (analytics-friendly, often not blocked), then fetch no-cors, then image
-    if (typeof navigator !== 'undefined' && navigator.sendBeacon && navigator.sendBeacon(url)) {
-      return;
-    }
+    // Use GET so Apps Script doGet(e) receives params in e.parameter. sendBeacon sends POST and Apps Script gives empty e.parameter for POST-with-URL-params.
     if (typeof fetch !== 'undefined') {
-      fetch(url, { mode: 'no-cors', keepalive: true }).catch(function() {
+      fetch(url, { method: 'GET', mode: 'no-cors', keepalive: true }).catch(function() {
         var img = new Image();
         img.src = url;
       });

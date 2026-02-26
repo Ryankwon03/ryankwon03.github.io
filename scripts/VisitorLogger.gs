@@ -31,8 +31,31 @@ function doPost(e) {
   return doGet(e);
 }
 
+/**
+ * Parse query string into an object. Used when POST has params in URL (e.g. sendBeacon) so e.parameter is empty.
+ */
+function parseQueryString(queryString) {
+  var params = {};
+  if (!queryString || typeof queryString !== 'string') return params;
+  var pairs = queryString.split('&');
+  for (var i = 0; i < pairs.length; i++) {
+    var parts = pairs[i].split('=');
+    if (parts.length >= 1 && parts[0]) {
+      var key = decodeURIComponent(parts[0].replace(/\+/g, ' '));
+      var val = parts.length >= 2 ? decodeURIComponent((parts.slice(1).join('=')).replace(/\+/g, ' ')) : '';
+      params[key] = val;
+    }
+  }
+  return params;
+}
+
 function doGet(e) {
   var params = e && e.parameter ? e.parameter : {};
+  // sendBeacon() sends POST with empty body but params in URL; Apps Script only puts POST body in e.parameter
+  if (!params.action && e && e.queryString) {
+    var urlParams = parseQueryString(e.queryString);
+    for (var k in urlParams) { params[k] = urlParams[k]; }
+  }
   var action = (params.action || '').toLowerCase();
   var out;
 
