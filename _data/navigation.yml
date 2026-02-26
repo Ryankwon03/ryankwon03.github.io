@@ -7,10 +7,10 @@
 main:
   - title: "Publications"
     url: /publications/
-
+    
   - title: "Experience"
     url: /experience/
-
+    
   - title: "Projects"
     url: /projects/
 
@@ -20,18 +20,15 @@ main:
   - title: "Contact"
     url: /contact/
 
-  # - title: "Visitors"
-  #   url: /visitors/
-
   # - title: "Talks"
-  #   url: /talks/
+  #   url: /talks/    
 
   # - title: "Teaching"
-  #   url: /teaching/
-
+  #   url: /teaching/    
+    
   # - title: "Portfolio"
   #   url: /portfolio/
-
+        
   # - title: "Blog Posts"
   #   url: /year-archive/
 

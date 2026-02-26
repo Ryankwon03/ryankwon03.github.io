@@ -3,7 +3,7 @@
 # This config file is meant for settings that affect your entire site, values
 # which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# `bundle exec jekyll serve -l -H localhost --livereload`. If you change this file, please restart the
+# `bundle exec jekyll serve -l -H localhost --livereload`. If you change this file, please restart the 
 # server process.
 
 # Basic Site Settings
@@ -23,12 +23,12 @@ author:
   # Biographic information
   avatar           : "ryan.jpg"
   name             : "Ryan (Sungmo) Kwon"
-  pronouns         : # example: "she/her"
+  pronouns         : # example: "she/her"  
   bio              : "Undergraduate Student<br><a href='https://cse.engin.umich.edu/' target='_blank'>CSE@UMich</a>"
   location         : "Ann Arbor, MI, USA"
   employer         : "University of Michigan"
   uri              : # URL
-  email            : "ryankwon@umich.edu"
+  email            : "ryankwon@umich.edu" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
@@ -45,8 +45,8 @@ author:
   codepen          : # Username
   dribbble         : # Username
   github           : "ryankwon03"
-  kaggle           : # Username
-  stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")
+  kaggle           : # Username  
+  stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
   bluesky          : # Replace this with you Bluesky username
@@ -79,7 +79,7 @@ publication_category:
   books:
     title: 'Books'
   manuscripts:
-    title: 'Journal Articles'
+    title: 'Journal Articles'    
   conferences:
     title: 'Conference Papers'
 
@@ -90,12 +90,6 @@ words_per_minute         : 160
 future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
 talkmap_link             : false #change to true to add link to talkmap on talks page
-
-# Visitor tracking (logs to Google Sheet via Apps Script; free)
-# Set script_url after deploying scripts/VisitorLogger.gs as a Web app (Deploy → New deployment → Web app, Anyone).
-visitor_tracking:
-  script_url             : "https://script.google.com/macros/s/AKfycby-FiNb0beW1HKakjsAVj4EG_ZTK-eIiQifB8dkFTiuIjYV1paqcX_TL08ajotqXTs7/exec" # e.g. "https://script.google.com/macros/s/xxxx/exec"
-
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
   disqus:
