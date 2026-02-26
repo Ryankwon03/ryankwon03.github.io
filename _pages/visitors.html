@@ -1,0 +1,82 @@
+---
+permalink: /visitors/
+title: "Visitor Stats"
+---
+
+<p>This page shows how many people have been recorded as visiting this site and where they connected from. Data is stored in a private Google Sheet and displayed here.</p>
+
+<div id="visitor-stats">
+  <p><strong>Total recorded visits:</strong> <span id="visit-count">—</span></p>
+  <p class="notice--info" id="visitor-note">Loading…</p>
+</div>
+
+<h2>Recent visits (IP, location, page)</h2>
+<div id="visitor-table-wrap">
+  <p id="visitor-table-loading">Loading…</p>
+  <table id="visitor-table" class="archive__item-table" style="display: none;">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>IP</th>
+        <th>Country</th>
+        <th>Region</th>
+        <th>City</th>
+        <th>Page</th>
+      </tr>
+    </thead>
+    <tbody id="visitor-table-body"></tbody>
+  </table>
+</div>
+
+{% if site.visitor_tracking.script_url %}
+<script>
+(function() {
+  var scriptUrl = {{ site.visitor_tracking.script_url | jsonify }};
+  if (!scriptUrl) {
+    document.getElementById('visitor-note').textContent = 'Visitor tracking is not configured. Add script_url in _config.yml under visitor_tracking.';
+    document.getElementById('visitor-table-loading').textContent = '';
+    return;
+  }
+  var url = scriptUrl + (scriptUrl.indexOf('?') >= 0 ? '&' : '?') + 'action=stats&callback=window.__visitorStatsCallback';
+  window.__visitorStatsCallback = function(data) {
+    var countEl = document.getElementById('visit-count');
+    var noteEl = document.getElementById('visitor-note');
+    var loadingEl = document.getElementById('visitor-table-loading');
+    var table = document.getElementById('visitor-table');
+    var body = document.getElementById('visitor-table-body');
+    if (data && typeof data.count === 'number') {
+      countEl.textContent = data.count;
+      noteEl.textContent = 'One visit per browser session is recorded. Data is stored in your Google Sheet.';
+    } else {
+      countEl.textContent = '0';
+      noteEl.textContent = 'No data yet, or tracking not set up.';
+    }
+    if (data && data.recent && data.recent.length) {
+      data.recent.forEach(function(row) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + (row.timestamp || '').replace(/</g, '&lt;') + '</td>' +
+          '<td>' + (row.ip || '').replace(/</g, '&lt;') + '</td>' +
+          '<td>' + (row.country || '').replace(/</g, '&lt;') + '</td>' +
+          '<td>' + (row.region || '').replace(/</g, '&lt;') + '</td>' +
+          '<td>' + (row.city || '').replace(/</g, '&lt;') + '</td>' +
+          '<td>' + (row.page || '').replace(/</g, '&lt;') + '</td>';
+        body.appendChild(tr);
+      });
+      table.style.display = 'table';
+      loadingEl.style.display = 'none';
+    } else {
+      loadingEl.textContent = 'No recent visits to show.';
+    }
+  };
+  var s = document.createElement('script');
+  s.src = url;
+  document.head.appendChild(s);
+})();
+</script>
+{% else %}
+<script>
+document.getElementById('visit-count').textContent = '0';
+document.getElementById('visitor-note').textContent = 'Visitor tracking is not configured. Add visitor_tracking.script_url in _config.yml (see scripts/VisitorLogger.gs and README for setup).';
+document.getElementById('visitor-table-loading').textContent = 'No data.';
+</script>
+{% endif %}

@@ -380,6 +380,110 @@ B.S. in Computer Science and Engineering <br>
 
 
 
+    
+<script>
+(function() {
+  var scriptUrl = "https://script.google.com/macros/s/AKfycby-FiNb0beW1HKakjsAVj4EG_ZTK-eIiQifB8dkFTiuIjYV1paqcX_TL08ajotqXTs7/exec";
+  if (!scriptUrl) return;
+  try {
+    if (sessionStorage.getItem('_vt') === '1') return;
+    sessionStorage.setItem('_vt', '1');
+  } catch (e) { }
+
+  var page = typeof window.location !== 'undefined' ? (window.location.pathname || window.location.href || '') : '';
+  var ua = (typeof navigator !== 'undefined' ? (navigator.userAgent || '') : '').slice(0, 300);
+
+  function sendLog(ip, country, region, city) {
+    var q = [
+      'action=log',
+      'ip=' + encodeURIComponent(ip || ''),
+      'country=' + encodeURIComponent(country || ''),
+      'region=' + encodeURIComponent(region || ''),
+      'city=' + encodeURIComponent(city || ''),
+      'page=' + encodeURIComponent(page),
+      'ua=' + encodeURIComponent(ua)
+    ].join('&');
+    var img = new Image();
+    img.src = scriptUrl + (scriptUrl.indexOf('?') >= 0 ? '&' : '?') + q;
+  }
+
+  function hasLocation(data) {
+    return data && (data.country || data.regionName || data.region || data.city || (data.country_name));
+  }
+  function fromIpApi(geo) {
+    return [(geo && geo.country) || '', (geo && geo.regionName) || (geo && geo.region) || '', (geo && geo.city) || ''];
+  }
+  function fromIpapiCo(geo) {
+    return [(geo && geo.country_name) || '', (geo && geo.region) || '', (geo && geo.city) || ''];
+  }
+
+  function getIpThenGeo(ip, done) {
+    if (!ip) { done('', '', '', ''); return; }
+    fetch('https://ip-api.com/json/' + encodeURIComponent(ip) + '?fields=status,country,regionName,city')
+      .then(function(r) { return r.json(); })
+      .then(function(geo) {
+        if (hasLocation(geo)) {
+          var c = fromIpApi(geo);
+          done(ip, c[0], c[1], c[2]);
+          return;
+        }
+        return fetch('https://ipapi.co/' + encodeURIComponent(ip) + '/json/')
+          .then(function(r2) { return r2.json(); })
+          .then(function(geo2) {
+            if (hasLocation(geo2)) {
+              var c = fromIpapiCo(geo2);
+              done(ip, c[0], c[1], c[2]);
+            } else {
+              done(ip, '', '', '');
+            }
+          });
+      })
+      .catch(function() {
+        fetch('https://ipapi.co/' + encodeURIComponent(ip) + '/json/')
+          .then(function(r) { return r.json(); })
+          .then(function(geo2) {
+            if (hasLocation(geo2)) {
+              var c = fromIpapiCo(geo2);
+              done(ip, c[0], c[1], c[2]);
+            } else {
+              done(ip, '', '', '');
+            }
+          })
+          .catch(function() { done(ip, '', '', ''); });
+      });
+  }
+
+  // 1) Try ip-api.com (IP + location in one call)
+  fetch('https://ip-api.com/json/?fields=status,query,country,regionName,city')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data && data.query && hasLocation(data)) {
+        sendLog(data.query, data.country || '', data.regionName || '', data.city || '');
+        return;
+      }
+      var ip = (data && data.query) ? data.query : null;
+      if (!ip) {
+        fetch('https://api.ipify.org?format=json')
+          .then(function(r2) { return r2.json(); })
+          .then(function(ipData) { ip = (ipData && ipData.ip) ? ipData.ip : ''; getIpThenGeo(ip, sendLog); })
+          .catch(function() { sendLog('', '', '', ''); });
+      } else {
+        getIpThenGeo(ip, sendLog);
+      }
+    })
+    .catch(function() {
+      fetch('https://api.ipify.org?format=json')
+        .then(function(r) { return r.json(); })
+        .then(function(ipData) {
+          var ip = (ipData && ipData.ip) ? ipData.ip : '';
+          getIpThenGeo(ip, sendLog);
+        })
+        .catch(function() { sendLog('', '', '', ''); });
+    });
+})();
+</script>
+
+
 
   </body>
 </html>
