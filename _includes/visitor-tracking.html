@@ -22,16 +22,9 @@
       'ua=' + encodeURIComponent(ua)
     ].join('&');
     var url = scriptUrl + (scriptUrl.indexOf('?') >= 0 ? '&' : '?') + q;
-    // Use GET so Apps Script doGet(e) receives params in e.parameter. sendBeacon sends POST and Apps Script gives empty e.parameter for POST-with-URL-params.
-    if (typeof fetch !== 'undefined') {
-      fetch(url, { method: 'GET', mode: 'no-cors', keepalive: true }).catch(function() {
-        var img = new Image();
-        img.src = url;
-      });
-    } else {
-      var img = new Image();
-      img.src = url;
-    }
+    // Use GET so Apps Script doGet(e) receives params. Prefer Image() so tracking works on GitHub Pages (CSP often allows img-src but restricts connect-src for fetch).
+    var img = new Image();
+    img.src = url;
   }
 
   function hasLocation(data) {
