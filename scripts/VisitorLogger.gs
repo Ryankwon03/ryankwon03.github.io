@@ -27,6 +27,10 @@ function ensureHeaders() {
   }
 }
 
+function doPost(e) {
+  return doGet(e);
+}
+
 function doGet(e) {
   var params = e && e.parameter ? e.parameter : {};
   var action = (params.action || '').toLowerCase();

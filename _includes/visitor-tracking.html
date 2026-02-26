@@ -21,8 +21,20 @@
       'page=' + encodeURIComponent(page),
       'ua=' + encodeURIComponent(ua)
     ].join('&');
-    var img = new Image();
-    img.src = scriptUrl + (scriptUrl.indexOf('?') >= 0 ? '&' : '?') + q;
+    var url = scriptUrl + (scriptUrl.indexOf('?') >= 0 ? '&' : '?') + q;
+    // Try sendBeacon first (analytics-friendly, often not blocked), then fetch no-cors, then image
+    if (typeof navigator !== 'undefined' && navigator.sendBeacon && navigator.sendBeacon(url)) {
+      return;
+    }
+    if (typeof fetch !== 'undefined') {
+      fetch(url, { mode: 'no-cors', keepalive: true }).catch(function() {
+        var img = new Image();
+        img.src = url;
+      });
+    } else {
+      var img = new Image();
+      img.src = url;
+    }
   }
 
   function hasLocation(data) {
