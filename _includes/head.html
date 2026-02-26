@@ -23,3 +23,8 @@
 <link rel="stylesheet" href="{{ base_path }}/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
+
+{% if site.visitor_tracking.script_url %}
+<!-- Allow visitor log to script.google.com (GitHub Pages CSP may block otherwise) -->
+<meta http-equiv="Content-Security-Policy" content="img-src 'self' https://script.google.com https://script.googleusercontent.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://ip-api.com https://ipapi.co https://api.ipify.org;">
+{% endif %}
