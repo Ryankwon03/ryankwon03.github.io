@@ -93,6 +93,11 @@
 <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
+
+
+<!-- Allow visitor log to script.google.com (GitHub Pages CSP may block otherwise) -->
+<meta http-equiv="Content-Security-Policy" content="img-src 'self' https://script.google.com https://script.googleusercontent.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://ip-api.com https://ipapi.co https://api.ipify.org;">
+
     
 
 <!-- start custom head snippets -->
@@ -278,7 +283,48 @@
   <!-- Conference Papers Section -->
   <h2>Conference Papers</h2>
   <hr class="black-divider" />
+
   
+    
+      
+
+
+
+
+
+<div class="list__item full-width-item">
+  <article class="archive__item full-width-content" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://arxiv.org/pdf/2607.11736">MET: Theory-Grounded and Culture-Aware Multilingual Moral Reasoning
+</a> <a href="http://localhost:4000/publications/2026-07-14-MET/" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+      
+    </h2>
+    
+    
+
+    
+      <div class="publication-meta"><i>COLM</i>, 2026</div>
+      
+      <div class="publication-authors">Ayoung Lee, <span style="font-weight: 700;">Ryan Sungmo Kwon</span>, Yunxiang Zhang, Yuxuan Liu, Peter Railton, Lu Wang</div>
+      
+      
+      <div class="paper-link">
+        <a href="https://arxiv.org/pdf/2607.11736">Paper</a> | <a href="https://huggingface.co/collections/launch/met">Dataset</a> | <a href="https://huggingface.co/collections/launch/met">Model</a>
+      </div>
+      
+    
+
+    <!-- Removed excerpt display as requested -->
+    
+    
+
+  </article>
+</div>
+
+    
   
     
       
@@ -362,11 +408,12 @@
 
     
   
-  
+
   <!-- Journal Papers Section -->
+  <!--
   <h2>Journal Papers</h2>
   <hr class="black-divider" />
-  
+
   <div class="list__item full-width-item">
     <article class="archive__item full-width-content" itemscope itemtype="http://schema.org/CreativeWork">
       <h2 class="archive__item-title" itemprop="headline">
@@ -379,6 +426,7 @@
       </div>
     </article>
   </div>
+  -->
 </div>
 </div>
 
@@ -451,16 +499,9 @@
       'ua=' + encodeURIComponent(ua)
     ].join('&');
     var url = scriptUrl + (scriptUrl.indexOf('?') >= 0 ? '&' : '?') + q;
-    // Use GET so Apps Script doGet(e) receives params in e.parameter. sendBeacon sends POST and Apps Script gives empty e.parameter for POST-with-URL-params.
-    if (typeof fetch !== 'undefined') {
-      fetch(url, { method: 'GET', mode: 'no-cors', keepalive: true }).catch(function() {
-        var img = new Image();
-        img.src = url;
-      });
-    } else {
-      var img = new Image();
-      img.src = url;
-    }
+    // Use GET so Apps Script doGet(e) receives params. Prefer Image() so tracking works on GitHub Pages (CSP often allows img-src but restricts connect-src for fetch).
+    var img = new Image();
+    img.src = url;
   }
 
   function hasLocation(data) {
